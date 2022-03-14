@@ -16,9 +16,7 @@ type rootConfig struct {
 	Emails        *[]string
 	GitPath       *string
 	OutPutPath    *string
-	Obfuscate     *bool
-	Headless      *bool
-	SkipUpload    *bool
+	HashImportant *bool
 }
 
 var (
@@ -52,9 +50,7 @@ func init() {
 	seedsString = rootCmd.PersistentFlags().String("seeds", "", "The seed is used to find similar emails. Example: \"alimgiray, alimgiray@codersrank.io\"")
 	RootConfig.GitPath = rootCmd.PersistentFlags().String("git_path", "", "where the Git binary is")
 	RootConfig.OutPutPath = rootCmd.PersistentFlags().String("output_path", "./artifacts", "Where to put output file. Existing artifacts will be overwritten.")
-	RootConfig.Obfuscate = rootCmd.PersistentFlags().Bool("obfuscate", true, "File names and emails won't be hashed. Set it to true for debug purposes.")
-	RootConfig.Headless = rootCmd.PersistentFlags().Bool("headless", false, "Headless mode is used on CodersRank's backend system.")
-	RootConfig.SkipUpload = rootCmd.PersistentFlags().Bool("skip_upload", false, "Artifacts won't be uploaded. Don't even ask whether to upload the artifacts.")
+	RootConfig.HashImportant = rootCmd.PersistentFlags().Bool("hash_important", false, "Emails will be hashed.")
 }
 
 func initConfig() {
